@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pin Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #none{
+            display: none;
+        }
+        #yes{
+            display: none;
+        }
+        #left{
+            display: none;
+        }
+        #message{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pin-generator half-width">
+                    <input class="form-control" type="text" id="genarateField">
+                    <button class="generate-btn" onclick="codeGenarate()" >Generate Pin</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-section half-width">
+                    <input class="form-control" type="text" id="outputNumber">
+                    <div class="numbers">
+                        <div class="calc-body" id="buttonContainer" >
+                            <div class="calc-button-row">
+                              <div class="button" id="inputNumber" >7</div>
+                              <div class="button" id="inputNumber">8</div>
+                              <div class="button" id="inputNumber">9</div>
+                            </div>
+                            <div class="calc-button-row">
+                              <div class="button" id="inputNumber" >4</div>
+                              <div class="button" id="inputNumber" >5</div>
+                              <div class="button" id="inputNumber" >6</div>
+                            </div>
+                            <div class="calc-button-row">
+                              <div class="button" id="inputNumber">1</div>
+                              <div class="button" id="inputNumber">2</div>
+                              <div class="button" id="inputNumber">3</div>
+                            </div>
+                            <div class="calc-button-row">
+                                <div class="button" onclick="codeGenarate()"><</div>
+                                <div class="button" id="inputNumber">0</div>
+                                <div class="button" id="inputNumber">C</div>
+                            </div>
+                            <div>
+                                <button type="submit" class="submit-btn" onclick="veriFypin()">Submit</button>
+                                <p class="action-left" id="left">3 try left</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="notify-section">
+            <p class="notify" id="message"> please enter the pin</p>
+            <p class="notify" id="none">❌ Pin Didn't Match, Please try again</p>
+            <p class="notify" id="yes">✅ Pin Matched... Secret door is opening for you</p>
+        </div>
+    </div>
+    <script>
+        function codeGenarate(input){
+            
+            const randomNumber=Math.random()*10000
+            var floorf=Math.floor( randomNumber)
+            if(floorf.lenght<4 || floorf.lenght>4){
+                codeGenaratefield.value=''
+
+            }
+            else{
+                
+                const codeGenaratefield=document.getElementById('genarateField')
+            codeGenaratefield.value=floorf
+            }
+           
+
+        }
+
+        const buttonContainer=document.getElementById('buttonContainer')
+        buttonContainer.addEventListener('click',function(event){
+            const digit=event.target.innerText
+            //console.log(digit)
+            const outputNumber=document.getElementById('outputNumber')
+            if(isNaN(digit))
+            {
+
+                if(digit==='C')
+                {
+                    const outputNumber=document.getElementById('outputNumber')
+
+                    outputNumber.value='';
+
+                }
+
+
+
+             
+
+            }
+            else{
+                const outputNumber=document.getElementById('outputNumber')
+                outputNumber.value=outputNumber.value+digit
+
+               
+            
+                
+            }
+            
+
+        })
+
+        function veriFypin(){
+            const outputpin=document.getElementById('outputNumber')
+            const codeGenaratepin=document.getElementById('genarateField')
+
+            if(outputpin.value=='')
+            {
+                document.getElementById('message').style.display='block'
+                document.getElementById('none').style.display='none'
+                document.getElementById('yes').style.display='none'
+            }
+
+            else if(outputpin.value==codeGenaratepin.value ){
+                document.getElementById('yes').style.display='block'
+                document.getElementById('none').style.display='none'
+                document.getElementById('message').style.display='none'
+
+            }
+            else{
+                document.getElementById('none').style.display='block'
+                document.getElementById('yes').style.display='none'
+                document.getElementById('message').style.display='none'
+                
+              
+            }
+
+        }
+
+        function deleteBtn(){
+            document.
+            if()
+        }
+    </script>
+</body>
+</html>
